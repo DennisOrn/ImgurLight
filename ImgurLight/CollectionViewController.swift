@@ -8,11 +8,11 @@
 
 import UIKit
 
-class MainCollectionViewController: UICollectionViewController {
+class CollectionViewController: UICollectionViewController, SearchDelegate {
     
     let reuseIdentifier = "cell"
     
-    let cells = ["cat1", "cat2", "cat3", "cat1", "cat2", "cat3", "cat1"]
+    let cells = ["daft_punk", "kanye_west", "tame_impala", "joy_division", "the_smiths", "metallica", "tycho"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,15 +36,26 @@ class MainCollectionViewController: UICollectionViewController {
         return UIStatusBarStyle.LightContent
     }
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "showInfo" {
+            
+            let controller = segue.destinationViewController as! ImageInfoViewController
+            let imageCell = sender as! ImageCell
+            
+            controller.image = imageCell.imageView.image
+            controller.text = imageCell.filename
+            
+        } else if segue.identifier == "search" {
+            
+            let navController = segue.destinationViewController as! UINavigationController
+            let controller = navController.topViewController as! SearchViewController
+            controller.delegate = self
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -98,12 +109,9 @@ class MainCollectionViewController: UICollectionViewController {
     }
     */
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "showInfo") {
-            let viewController = segue.destinationViewController as! ImageInfoViewController
-            let imageCell = sender as! ImageCell
-            viewController.text = imageCell.filename
-        }
+    // MARK: SearchDelegate
+    
+    func performSearch(keyword: String) {
+        print(keyword)
     }
-
 }

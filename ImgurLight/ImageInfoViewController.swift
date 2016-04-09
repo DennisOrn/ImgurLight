@@ -10,13 +10,16 @@ import UIKit
 
 class ImageInfoViewController: UIViewController {
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     
     var text: String?
+    var image: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imageView.image = image
         label.text = text
     }
 

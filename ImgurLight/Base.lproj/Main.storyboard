@@ -5,10 +5,54 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
+        <!--Search View Controller-->
+        <scene sceneID="3AQ-8X-QD1">
+            <objects>
+                <viewController id="CEz-ig-783" customClass="SearchViewController" customModule="ImgurLight" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dKh-X9-w7O"/>
+                        <viewControllerLayoutGuide type="bottom" id="M4r-ND-TCu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vdT-fx-USc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter keyword..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t95-e9-EE5">
+                                <rect key="frame" x="237" y="285" width="126" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="t95-e9-EE5" firstAttribute="centerX" secondItem="vdT-fx-USc" secondAttribute="centerX" id="abn-Ru-Hvs"/>
+                            <constraint firstItem="t95-e9-EE5" firstAttribute="centerY" secondItem="vdT-fx-USc" secondAttribute="centerY" id="gw3-mg-u1Y"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="clW-Rh-K6l">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Wil-xv-BcY">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="CEz-ig-783" id="YGs-f6-DXK"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="TfQ-ao-0Y9">
+                            <connections>
+                                <action selector="searchButtonPressed:" destination="CEz-ig-783" id="ntx-ba-EIN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textField" destination="t95-e9-EE5" id="O5d-gT-jih"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vxh-7o-2LT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3003" y="-1569"/>
+        </scene>
         <!--Title-->
         <scene sceneID="ftr-7P-e5v">
             <objects>
-                <collectionViewController id="Vw1-VF-1vJ" customClass="MainCollectionViewController" customModule="ImgurLight" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="Vw1-VF-1vJ" customClass="CollectionViewController" customModule="ImgurLight" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" dataMode="prototypes" id="xCY-9F-tGH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +93,13 @@
                             <outlet property="delegate" destination="Vw1-VF-1vJ" id="EJi-2N-rt4"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Title" id="GxS-Ob-hv7"/>
+                    <navigationItem key="navigationItem" title="Title" id="GxS-Ob-hv7">
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="bp0-fx-Mz0">
+                            <connections>
+                                <segue destination="AaL-a6-Znw" kind="presentation" identifier="search" id="Obe-nr-bmJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ssD-9k-pA3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -68,19 +118,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[IMAGE INFO]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeJ-RG-LCO">
-                                <rect key="frame" x="247" y="289" width="106" height="21"/>
+                                <rect key="frame" x="247" y="489" width="106" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BRK-Dh-300">
+                                <rect key="frame" x="0.0" y="64" width="600" height="300"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JeJ-RG-LCO" firstAttribute="centerX" secondItem="vqT-vA-sMX" secondAttribute="centerX" id="Q1w-MY-4OU"/>
-                            <constraint firstItem="JeJ-RG-LCO" firstAttribute="centerY" secondItem="vqT-vA-sMX" secondAttribute="centerY" id="vkX-pc-QG9"/>
+                            <constraint firstItem="BRK-Dh-300" firstAttribute="top" secondItem="OWI-hf-nZ8" secondAttribute="bottom" id="F8m-Zg-k1z"/>
+                            <constraint firstItem="BRK-Dh-300" firstAttribute="centerX" secondItem="vqT-vA-sMX" secondAttribute="centerX" id="GSz-zy-APG"/>
+                            <constraint firstItem="y2e-zb-zqD" firstAttribute="top" secondItem="BRK-Dh-300" secondAttribute="bottom" constant="187" id="GWJ-pI-Koq"/>
+                            <constraint firstItem="BRK-Dh-300" firstAttribute="width" secondItem="vqT-vA-sMX" secondAttribute="width" id="XUF-SG-MIF"/>
+                            <constraint firstItem="y2e-zb-zqD" firstAttribute="top" secondItem="JeJ-RG-LCO" secondAttribute="bottom" constant="41" id="mMb-bx-8dn"/>
+                            <constraint firstItem="JeJ-RG-LCO" firstAttribute="centerX" secondItem="vqT-vA-sMX" secondAttribute="centerX" id="xSf-66-Xbq"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="BRK-Dh-300" id="66m-Uo-Cd4"/>
                         <outlet property="label" destination="JeJ-RG-LCO" id="hCq-oV-f7z"/>
                     </connections>
                 </viewController>
@@ -88,10 +146,10 @@
             </objects>
             <point key="canvasLocation" x="2287" y="-855"/>
         </scene>
-        <!--Second View Controller-->
+        <!--View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="ImgurLight" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -188,6 +246,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g2b-xy-vck" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="900" y="-855"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ygL-yx-9ql">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AaL-a6-Znw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="vqh-V9-MkY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CEz-ig-783" kind="relationship" relationship="rootViewController" id="GPe-zV-68n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kmn-OO-p0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2287" y="-1569"/>
         </scene>
     </scenes>
 </document>
