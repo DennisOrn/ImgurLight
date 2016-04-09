@@ -40,6 +40,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="sNw-wm-LjC" id="YAc-Qm-Umf"/>
+                                    <segue destination="UNK-MH-oIb" kind="show" identifier="showInfo" id="bVu-Fb-gHu"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -52,7 +53,40 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ssD-9k-pA3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1712" y="-855"/>
+            <point key="canvasLocation" x="1604" y="-855"/>
+        </scene>
+        <!--Image Info View Controller-->
+        <scene sceneID="UXG-VF-wPc">
+            <objects>
+                <viewController id="UNK-MH-oIb" customClass="ImageInfoViewController" customModule="ImgurLight" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OWI-hf-nZ8"/>
+                        <viewControllerLayoutGuide type="bottom" id="y2e-zb-zqD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vqT-vA-sMX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[IMAGE INFO]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeJ-RG-LCO">
+                                <rect key="frame" x="247" y="289" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JeJ-RG-LCO" firstAttribute="centerX" secondItem="vqT-vA-sMX" secondAttribute="centerX" id="Q1w-MY-4OU"/>
+                            <constraint firstItem="JeJ-RG-LCO" firstAttribute="centerY" secondItem="vqT-vA-sMX" secondAttribute="centerY" id="vkX-pc-QG9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="JeJ-RG-LCO" id="hCq-oV-f7z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sZQ-DM-ePx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2287" y="-855"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="wg7-f3-ORb">

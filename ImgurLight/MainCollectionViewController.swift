@@ -12,6 +12,8 @@ class MainCollectionViewController: UICollectionViewController {
     
     let reuseIdentifier = "cell"
     
+    let cells = ["cat1", "cat2", "cat3", "cat1", "cat2", "cat3", "cat1"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,21 +49,14 @@ class MainCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return cells.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ImageCell
         
-        var filename: String!
-        let rnd = Int(arc4random_uniform(3) + 1)
-        if rnd == 1 {
-            filename = "cat1"
-        } else if rnd == 2 {
-            filename = "cat2"
-        } else {
-            filename = "cat3"
-        }
+        let filename = cells[indexPath.row]
+        cell.filename = filename
         cell.imageView.image = UIImage(named: filename)
         
         return cell
@@ -102,5 +97,13 @@ class MainCollectionViewController: UICollectionViewController {
     
     }
     */
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "showInfo") {
+            let viewController = segue.destinationViewController as! ImageInfoViewController
+            let imageCell = sender as! ImageCell
+            viewController.text = imageCell.filename
+        }
+    }
 
 }

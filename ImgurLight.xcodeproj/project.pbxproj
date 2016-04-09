@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B4ABF681CB932CE00E34E5D /* ImageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4ABF671CB932CE00E34E5D /* ImageInfoViewController.swift */; };
 		4BF7C4261CB007FF002623C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7C4251CB007FF002623C4 /* AppDelegate.swift */; };
 		4BF7C4281CB007FF002623C4 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7C4271CB007FF002623C4 /* FirstViewController.swift */; };
 		4BF7C42A1CB007FF002623C4 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7C4291CB007FF002623C4 /* SecondViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B4ABF671CB932CE00E34E5D /* ImageInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfoViewController.swift; sourceTree = "<group>"; };
 		4BF7C4221CB007FF002623C4 /* ImgurLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImgurLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BF7C4251CB007FF002623C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BF7C4271CB007FF002623C4 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				4BF7C4251CB007FF002623C4 /* AppDelegate.swift */,
 				4BF7C4271CB007FF002623C4 /* FirstViewController.swift */,
 				4BF7C4391CB00D08002623C4 /* MainCollectionViewController.swift */,
+				4B4ABF671CB932CE00E34E5D /* ImageInfoViewController.swift */,
 				4BF7C43B1CB00E21002623C4 /* ImageCell.swift */,
 				4BF7C4291CB007FF002623C4 /* SecondViewController.swift */,
 				4BF7C42B1CB007FF002623C4 /* Main.storyboard */,
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B4ABF681CB932CE00E34E5D /* ImageInfoViewController.swift in Sources */,
 				4BF7C42A1CB007FF002623C4 /* SecondViewController.swift in Sources */,
 				4BF7C43A1CB00D08002623C4 /* MainCollectionViewController.swift in Sources */,
 				4BF7C4261CB007FF002623C4 /* AppDelegate.swift in Sources */,
@@ -301,6 +305,7 @@
 				4BF7C4381CB007FF002623C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
