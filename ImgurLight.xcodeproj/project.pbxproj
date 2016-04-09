@@ -13,6 +13,8 @@
 		4BF7C42D1CB007FF002623C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BF7C42B1CB007FF002623C4 /* Main.storyboard */; };
 		4BF7C42F1CB007FF002623C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BF7C42E1CB007FF002623C4 /* Assets.xcassets */; };
 		4BF7C4321CB007FF002623C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BF7C4301CB007FF002623C4 /* LaunchScreen.storyboard */; };
+		4BF7C43A1CB00D08002623C4 /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7C4391CB00D08002623C4 /* MainCollectionViewController.swift */; };
+		4BF7C43C1CB00E21002623C4 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7C43B1CB00E21002623C4 /* ImageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		4BF7C42E1CB007FF002623C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BF7C4311CB007FF002623C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BF7C4331CB007FF002623C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BF7C4391CB00D08002623C4 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
+		4BF7C43B1CB00E21002623C4 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 			children = (
 				4BF7C4251CB007FF002623C4 /* AppDelegate.swift */,
 				4BF7C4271CB007FF002623C4 /* FirstViewController.swift */,
+				4BF7C4391CB00D08002623C4 /* MainCollectionViewController.swift */,
+				4BF7C43B1CB00E21002623C4 /* ImageCell.swift */,
 				4BF7C4291CB007FF002623C4 /* SecondViewController.swift */,
 				4BF7C42B1CB007FF002623C4 /* Main.storyboard */,
 				4BF7C42E1CB007FF002623C4 /* Assets.xcassets */,
@@ -140,8 +146,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BF7C42A1CB007FF002623C4 /* SecondViewController.swift in Sources */,
+				4BF7C43A1CB00D08002623C4 /* MainCollectionViewController.swift in Sources */,
 				4BF7C4261CB007FF002623C4 /* AppDelegate.swift in Sources */,
 				4BF7C4281CB007FF002623C4 /* FirstViewController.swift in Sources */,
+				4BF7C43C1CB00E21002623C4 /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
