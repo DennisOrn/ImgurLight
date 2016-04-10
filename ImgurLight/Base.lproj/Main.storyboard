@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Search View Controller-->
@@ -17,16 +18,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter keyword..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t95-e9-EE5">
-                                <rect key="frame" x="237" y="285" width="126" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t95-e9-EE5">
+                                <rect key="frame" x="20" y="72" width="560" height="30"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WOf-ow-OsX">
+                                <rect key="frame" x="0.0" y="110" width="600" height="470"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" id="CcU-tw-7hq">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CcU-tw-7hq" id="tyy-7D-dQf">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="t95-e9-EE5" firstAttribute="centerX" secondItem="vdT-fx-USc" secondAttribute="centerX" id="abn-Ru-Hvs"/>
-                            <constraint firstItem="t95-e9-EE5" firstAttribute="centerY" secondItem="vdT-fx-USc" secondAttribute="centerY" id="gw3-mg-u1Y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="t95-e9-EE5" secondAttribute="trailing" id="0wx-c9-Bmj"/>
+                            <constraint firstItem="WOf-ow-OsX" firstAttribute="top" secondItem="t95-e9-EE5" secondAttribute="bottom" constant="8" id="1I8-IY-amc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WOf-ow-OsX" secondAttribute="trailing" constant="-20" id="A1z-zb-J7E"/>
+                            <constraint firstItem="WOf-ow-OsX" firstAttribute="leading" secondItem="vdT-fx-USc" secondAttribute="leadingMargin" constant="-20" id="PXE-yu-RR6"/>
+                            <constraint firstItem="M4r-ND-TCu" firstAttribute="top" secondItem="WOf-ow-OsX" secondAttribute="bottom" constant="20" id="j79-HZ-qbo"/>
+                            <constraint firstItem="t95-e9-EE5" firstAttribute="top" secondItem="dKh-X9-w7O" secondAttribute="bottom" constant="8" id="kcK-ed-Iua"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="t95-e9-EE5" secondAttribute="leading" id="mbe-sA-zdV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="clW-Rh-K6l">
@@ -42,6 +65,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="WOf-ow-OsX" id="Sgj-ck-SYW"/>
                         <outlet property="textField" destination="t95-e9-EE5" id="O5d-gT-jih"/>
                     </connections>
                 </viewController>
@@ -161,7 +185,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tab 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAh-uX-1zv">
                                 <rect key="frame" x="279" y="289" width="43" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -192,7 +216,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tab 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rw9-Ew-b7x">
                                 <rect key="frame" x="278" y="289" width="43" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

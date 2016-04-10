@@ -9,24 +9,46 @@
 import UIKit
 
 protocol SearchDelegate: class {
-    func performSearch(keyword: String)
+    func changeTitle(title: String)
 }
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     weak var delegate: SearchDelegate?
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var searchResult = [String]()
+    
+    let reuseIdentifier = "tableCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResult.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        let row = indexPath.row
+        cell.textLabel?.text = searchResult[row]
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        return cell
+    }
+    
+    
     
     // MARK: - Navigation
     
@@ -35,18 +57,31 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func searchButtonPressed(sender: UIBarButtonItem) {
-        let keyword = textField.text
-        if keyword?.characters.count == 0 {
+        
+        // Clear the search result first.
+        searchResult.removeAll()
+        tableView.reloadData()
+        
+        // Check if there is a keyword in the text field.
+        let keyword = textField.text!
+        if keyword.characters.count == 0 {
             print("type something!")
             return
         }
-        delegate?.performSearch(keyword!)
-        /*
-         IS IT BETTER TO FETCH THE RESULT HERE OR IN THE MAIN CONTROLLER?
-         */
-        dismissViewControllerAnimated(true, completion: {})
+        
+        searchResult.append(keyword)
+        
+        let row = searchResult.indexOf(keyword)!
+        let indexPath = NSIndexPath(forRow: row, inSection: 0)
+        tableView.beginUpdates()
+        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        tableView.endUpdates()
+        
+        //dismissViewControllerAnimated(true, completion: {})
     }
-
+    
+    
+    
     
     /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation

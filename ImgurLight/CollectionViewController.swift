@@ -111,7 +111,7 @@ class CollectionViewController: UICollectionViewController, SearchDelegate {
     
     // MARK: SearchDelegate
     
-    func performSearch(keyword: String) {
-        print(keyword)
+    func changeTitle(title: String) {
+        print(title)
     }
 }
