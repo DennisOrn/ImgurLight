@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t95-e9-EE5">
-                                <rect key="frame" x="20" y="72" width="560" height="30"/>
+                                <rect key="frame" x="20" y="110" width="560" height="30"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WOf-ow-OsX">
-                                <rect key="frame" x="0.0" y="110" width="600" height="470"/>
+                                <rect key="frame" x="0.0" y="148" width="600" height="432"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" id="CcU-tw-7hq">
@@ -40,25 +40,38 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdr-5w-xcR">
+                                <rect key="frame" x="20" y="72" width="128" height="30"/>
+                                <state key="normal" title="Go to Most Recent">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="mostRecentButtonPressed:" destination="CEz-ig-783" eventType="touchUpInside" id="ph0-Kl-ZHT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="t95-e9-EE5" secondAttribute="trailing" id="0wx-c9-Bmj"/>
                             <constraint firstItem="WOf-ow-OsX" firstAttribute="top" secondItem="t95-e9-EE5" secondAttribute="bottom" constant="8" id="1I8-IY-amc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WOf-ow-OsX" secondAttribute="trailing" constant="-20" id="A1z-zb-J7E"/>
+                            <constraint firstItem="sdr-5w-xcR" firstAttribute="top" secondItem="dKh-X9-w7O" secondAttribute="bottom" constant="8" id="FSp-Kx-MDy"/>
                             <constraint firstItem="WOf-ow-OsX" firstAttribute="leading" secondItem="vdT-fx-USc" secondAttribute="leadingMargin" constant="-20" id="PXE-yu-RR6"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="sdr-5w-xcR" secondAttribute="leading" id="YZn-RQ-OlT"/>
                             <constraint firstItem="M4r-ND-TCu" firstAttribute="top" secondItem="WOf-ow-OsX" secondAttribute="bottom" constant="20" id="j79-HZ-qbo"/>
-                            <constraint firstItem="t95-e9-EE5" firstAttribute="top" secondItem="dKh-X9-w7O" secondAttribute="bottom" constant="8" id="kcK-ed-Iua"/>
                             <constraint firstAttribute="leadingMargin" secondItem="t95-e9-EE5" secondAttribute="leading" id="mbe-sA-zdV"/>
+                            <constraint firstItem="t95-e9-EE5" firstAttribute="top" secondItem="dKh-X9-w7O" secondAttribute="bottom" constant="46" id="pxE-p0-jpq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="clW-Rh-K6l">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Wil-xv-BcY">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="CEz-ig-783" id="YGs-f6-DXK"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="TfQ-ao-0Y9">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="searchButtonPressed:" destination="CEz-ig-783" id="ntx-ba-EIN"/>
                             </connections>
@@ -73,7 +86,7 @@
             </objects>
             <point key="canvasLocation" x="3003" y="-1569"/>
         </scene>
-        <!--Title-->
+        <!--Most Recent-->
         <scene sceneID="ftr-7P-e5v">
             <objects>
                 <collectionViewController id="Vw1-VF-1vJ" customClass="CollectionViewController" customModule="ImgurLight" customModuleProvider="target" sceneMemberID="viewController">
@@ -117,8 +130,9 @@
                             <outlet property="delegate" destination="Vw1-VF-1vJ" id="EJi-2N-rt4"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Title" id="GxS-Ob-hv7">
+                    <navigationItem key="navigationItem" title="Most Recent" id="GxS-Ob-hv7">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="bp0-fx-Mz0">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="AaL-a6-Znw" kind="presentation" identifier="search" id="Obe-nr-bmJ"/>
                             </connections>

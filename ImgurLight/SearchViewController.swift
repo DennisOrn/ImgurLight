@@ -54,7 +54,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let text = (cell?.textLabel?.text)!
         delegate?.changeTitle(text)
         
-        dismissViewControllerAnimated(true, completion: {}) /////////
+        dismissViewControllerAnimated(true, completion: {})
     }
     
     
@@ -85,10 +85,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.beginUpdates()
         tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         tableView.endUpdates()
-        
-        //dismissViewControllerAnimated(true, completion: {})
     }
     
+    @IBAction func mostRecentButtonPressed(sender: UIButton) {
+        delegate?.changeTitle("Most Recent")
+        dismissViewControllerAnimated(true, completion: {})
+    }
     
     
     
