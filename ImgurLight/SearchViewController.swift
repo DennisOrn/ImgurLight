@@ -45,7 +45,16 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let row = indexPath.row
         cell.textLabel?.text = searchResult[row]
         cell.textLabel?.textColor = UIColor.whiteColor()
+        //cell.selectionStyle = .None
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let text = (cell?.textLabel?.text)!
+        delegate?.changeTitle(text)
+        
+        dismissViewControllerAnimated(true, completion: {}) /////////
     }
     
     

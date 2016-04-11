@@ -112,6 +112,6 @@ class CollectionViewController: UICollectionViewController, SearchDelegate {
     // MARK: SearchDelegate
     
     func changeTitle(title: String) {
-        print(title)
+        navigationItem.title = title
     }
 }
