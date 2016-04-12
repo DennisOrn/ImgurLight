@@ -114,4 +114,8 @@ class CollectionViewController: UICollectionViewController, SearchDelegate {
     func changeTitle(title: String) {
         navigationItem.title = title
     }
+    
+    func dismissController(controller: UIViewController) {
+        controller.dismissViewControllerAnimated(true) {}
+    }
 }

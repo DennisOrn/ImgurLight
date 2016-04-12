@@ -10,6 +10,7 @@ import UIKit
 
 protocol SearchDelegate: class {
     func changeTitle(title: String)
+    func dismissController(controller: UIViewController)
 }
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -53,8 +54,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         let text = (cell?.textLabel?.text)!
         delegate?.changeTitle(text)
-        
-        dismissViewControllerAnimated(true, completion: {})
+        delegate?.dismissController(self)
     }
     
     
@@ -62,7 +62,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - Navigation
     
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: {})
+        delegate?.dismissController(self)
     }
     
     @IBAction func searchButtonPressed(sender: UIBarButtonItem) {
@@ -89,7 +89,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func mostRecentButtonPressed(sender: UIButton) {
         delegate?.changeTitle("Most Recent")
-        dismissViewControllerAnimated(true, completion: {})
+        delegate?.dismissController(self)
     }
     
     
