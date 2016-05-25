@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class TestViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    
-    let ClientID = "f69a0d8f212a0f8"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,43 +24,33 @@ class TestViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    enum JSONError: String, ErrorType {
-        case NoData = "ERROR: no data"
-        case ConversionFailed = "ERROR: conversion from JSON failed"
-    }
-    
     @IBAction func buttonPressed(sender: UIButton) {
-        print("button pressed")
-        
-        let url = NSURL(string: "https://api.imgur.com/oauth2/authorize?client_id=" + ClientID + "&response_type=token")!
-        //let url = NSURL(string: "https://httpbin.org/ip")!
-        let request = NSURLRequest(URL: url)
-        
-        NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
-            
-            do {
-                guard let data = data else {
-                    throw JSONError.NoData
-                }
-                guard let json = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? NSDictionary else {
-                    throw JSONError.ConversionFailed
-                }
-                print(json)
-            } catch let error as JSONError {
-                print(error.rawValue)
-            } catch let error as NSError {
-                print(error.debugDescription)
-            }
-            
-            /*if error != nil {
-                print("error")
-            } else {
-                //let result = NSString(data: data!, encoding: NSASCIIStringEncoding)!
+        Alamofire.request(.GET, "https://api.imgur.com/3/topics/defaults")
+            .responseJSON { response in
+                print(response.request)  // original URL request
+                print(response.response) // URL response
+                print(response.data)     // server data
+                print(response.result)   // result of response serialization
                 
-                
-                print(response)
-                //print(result)
-            }*/
-        }.resume()
+                if let json = response.result.value {
+                    //print("JSON: \(JSON)")
+                    
+                    /*let response = json as! NSDictionary
+                     let data = response.objectForKey("data")!
+                     print(data.dynamicType)
+                     print(data.count)*/
+                    //print(data.firstObject)
+                    
+                    let data = JSON(json)
+                    print(data)
+                    print("\n\n")
+                    for item in data["data"].arrayValue {
+                        print(item["description"].stringValue)
+                    }
+                    
+                    
+                    //self.label.text = "asd\nasd\nasd"//JSON as? String
+                }
+        }
     }
 }
