@@ -8,27 +8,34 @@
 
 import UIKit
 
-class ImageInfoViewController: UIViewController {
+class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     
+    var API: ImgurAPI?
+    
     var text: String?
     var image: UIImage?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.image = image
+        //imageView.image = image
+        
+        API = ImgurAPI()
+        API?.delegate = self
+        API?.getImageById("jyuTT02")
+        
         label.text = text
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
 
@@ -38,5 +45,9 @@ class ImageInfoViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    
+    func APIsetImage(image: UIImage) {
+        imageView.image = image
+    }
 }
