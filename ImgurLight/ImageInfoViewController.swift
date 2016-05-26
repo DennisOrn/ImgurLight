@@ -21,12 +21,11 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //imageView.image = image
-        
-        API = ImgurAPI()
+        /*API = ImgurAPI()
         API?.delegate = self
-        API?.getImageById("jyuTT02")
+        API?.getImageById("jyuTT02")*/
         
+        imageView.image = image
         label.text = text
     }
     

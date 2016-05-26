@@ -11,7 +11,8 @@ import UIKit
 class CollectionViewController: UICollectionViewController, SearchDelegate, ImgurAPIDelegate {
     
     let reuseIdentifier = "cell"
-    let cells = ["daft_punk", "kanye_west", "tame_impala", "joy_division", "the_smiths", "metallica", "tycho"]
+    var cells = [UIImage]()
+    //let cells = ["daft_punk", "kanye_west", "tame_impala", "joy_division", "the_smiths", "metallica", "tycho"]
     
     var API: ImgurAPI?
     
@@ -26,9 +27,37 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
         automaticallyAdjustsScrollViewInsets = false
         collectionView?.contentInset.top = 20*/
         
+        
+        
+        
+        /*cells.append(UIImage(named: "daft_punk")!)
+        cells.append(UIImage(named: "kanye_west")!)
+        cells.append(UIImage(named: "tame_impala")!)
+        cells.append(UIImage(named: "joy_division")!)
+        cells.append(UIImage(named: "the_smiths")!)
+        cells.append(UIImage(named: "metallica")!)
+        cells.append(UIImage(named: "tycho")!)*/
+        
+        
+        
+        
+        
         API = ImgurAPI()
         API?.delegate = self
+        
+        API?.getImagesByTag("cats")
     }
+    
+    
+    func APIsetImage(image: UIImage) {
+        cells.append(image)
+        
+        self.collectionView?.reloadData()
+        // update?// update?// update?// update?// update?// update? collectionview?
+    }
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -51,7 +80,7 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
             let imageCell = sender as! ImageCell
             
             controller.image = imageCell.imageView.image
-            controller.text = imageCell.filename
+            controller.text = imageCell.id
             
         } else if segue.identifier == "search" {
             
@@ -70,9 +99,13 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ImageCell
         
-        let filename = cells[indexPath.row]
+        /*let filename = cells[indexPath.row]
         cell.filename = filename
-        cell.imageView.image = UIImage(named: filename)
+        cell.imageView.image = UIImage(named: filename)*/
+        
+        //let id = "test ya"
+        //cell.id = id
+        cell.imageView.image = cells[indexPath.row]
         
         return cell
     }
@@ -121,9 +154,5 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
     
     func dismissController(controller: UIViewController) {
         controller.dismissViewControllerAnimated(true) {}
-    }
-    
-    func APIsetImage(image: UIImage) {
-        print("yoyo 1")
     }
 }
