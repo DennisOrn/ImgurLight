@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 @objc protocol ImgurAPIDelegate: class {
-    optional func APIsetImage(image: UIImage)
+    optional func APIsetImage(imgurImage: ImgurImage)
     optional func APIsetImages(images: [UIImage])
 }
 
@@ -25,19 +25,18 @@ class ImgurAPI: NSObject { // Singleton?
     
     let imageQuality = "m" // t = small, m = medium, l = large, h = huge, "" = normal
     
-    
-    var imageList = [UIImage]()
-    
-    
     func getImageById(id: String) {
         
         Alamofire.request(.GET, urlBase + id + imageQuality + ".jpg")
             .responseJSON { response in
                 
                 if let data = response.data {
+                    
                     let image = UIImage(data: data, scale: 1)
                     if image != nil {
-                        self.delegate?.APIsetImage?(image!)
+                        //image!.id = id
+                        let imgurImage = ImgurImage(id: id, image: image!)
+                        self.delegate?.APIsetImage?(imgurImage)
                     }
                 }
         }
@@ -103,8 +102,8 @@ class ImgurAPI: NSObject { // Singleton?
                             
                             let image = UIImage(data: data, scale: 1)
                             if image != nil {
-                                
-                                self.delegate?.APIsetImage?(image!)
+                                let imgurImage = ImgurImage(id: id, image: image!)
+                                self.delegate?.APIsetImage?(imgurImage)
                             }
                         }
                         dispatch_group_leave(group)
@@ -114,18 +113,4 @@ class ImgurAPI: NSObject { // Singleton?
             print("getImagesByTag DONE!")
         }
     }
-    
-    
-    
-    /*static func searchByTag(tag: String) {
-        
-        Alamofire.request(.GET, apiBase + "gallery/t/" + tag, headers: header)
-            .responseJSON { response in
-                
-                if let jsonData = response.result.value {
-                    let json = JSON(jsonData)
-                    print(json)
-                }
-        }
-    }*/
 }

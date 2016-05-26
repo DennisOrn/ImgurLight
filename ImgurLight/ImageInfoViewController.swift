@@ -46,7 +46,7 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     */
     
     
-    func APIsetImage(image: UIImage) {
+    /*func APIsetImage(image: UIImage) {
         imageView.image = image
-    }
+    }*/
 }

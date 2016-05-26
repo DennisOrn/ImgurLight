@@ -11,7 +11,7 @@ import UIKit
 class CollectionViewController: UICollectionViewController, SearchDelegate, ImgurAPIDelegate {
     
     let reuseIdentifier = "cell"
-    var cells = [UIImage]()
+    var cells = [ImgurImage]()
     //let cells = ["daft_punk", "kanye_west", "tame_impala", "joy_division", "the_smiths", "metallica", "tycho"]
     
     var API: ImgurAPI?
@@ -49,12 +49,15 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
     }
     
     
-    func APIsetImage(image: UIImage) {
-        cells.append(image)
+
+    
+    func APIsetImage(image: ImgurImage) {
         
+        cells.append(image)
         self.collectionView?.reloadData()
-        // update?// update?// update?// update?// update?// update? collectionview?
     }
+    
+    
     
     
     
@@ -104,8 +107,8 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
         cell.imageView.image = UIImage(named: filename)*/
         
         //let id = "test ya"
-        //cell.id = id
-        cell.imageView.image = cells[indexPath.row]
+        cell.id = cells[indexPath.row].id
+        cell.imageView.image = cells[indexPath.row].image
         
         return cell
     }

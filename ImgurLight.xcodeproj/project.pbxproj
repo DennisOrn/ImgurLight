@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		30F7405A25681504188A6499 /* Pods_ImgurLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1684CB44F043DAB1939592 /* Pods_ImgurLight.framework */; };
 		4B04B4331CF630090023B895 /* ImgurAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B04B4321CF630090023B895 /* ImgurAPI.swift */; };
+		4B04B4351CF75C130023B895 /* ImgurImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B04B4341CF75C130023B895 /* ImgurImage.swift */; };
 		4B35C7B01CB956250034C895 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B35C7AF1CB956250034C895 /* SearchViewController.swift */; };
 		4B4ABF681CB932CE00E34E5D /* ImageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4ABF671CB932CE00E34E5D /* ImageInfoViewController.swift */; };
 		4B8300E41CCE8CEA0059F43C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8300E31CCE8CEA0059F43C /* TestViewController.swift */; };
@@ -24,6 +25,7 @@
 		0A1684CB44F043DAB1939592 /* Pods_ImgurLight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImgurLight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4326F71CB309763C931DF435 /* Pods-ImgurLight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImgurLight.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImgurLight/Pods-ImgurLight.debug.xcconfig"; sourceTree = "<group>"; };
 		4B04B4321CF630090023B895 /* ImgurAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImgurAPI.swift; sourceTree = "<group>"; };
+		4B04B4341CF75C130023B895 /* ImgurImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImgurImage.swift; sourceTree = "<group>"; };
 		4B35C7AF1CB956250034C895 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4B4ABF671CB932CE00E34E5D /* ImageInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfoViewController.swift; sourceTree = "<group>"; };
 		4B8300E31CCE8CEA0059F43C /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				4BF7C4301CB007FF002623C4 /* LaunchScreen.storyboard */,
 				4BF7C4331CB007FF002623C4 /* Info.plist */,
 				4B04B4321CF630090023B895 /* ImgurAPI.swift */,
+				4B04B4341CF75C130023B895 /* ImgurImage.swift */,
 			);
 			path = ImgurLight;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			files = (
 				4B35C7B01CB956250034C895 /* SearchViewController.swift in Sources */,
 				4B4ABF681CB932CE00E34E5D /* ImageInfoViewController.swift in Sources */,
+				4B04B4351CF75C130023B895 /* ImgurImage.swift in Sources */,
 				4BF7C43A1CB00D08002623C4 /* CollectionViewController.swift in Sources */,
 				4B04B4331CF630090023B895 /* ImgurAPI.swift in Sources */,
 				4BF7C4261CB007FF002623C4 /* AppDelegate.swift in Sources */,

@@ -31,7 +31,7 @@ class TestViewController: UIViewController, ImgurAPIDelegate {
     
     @IBAction func buttonPressed(sender: UIButton) {
         
-        API?.getImagesByTag("cats")
+        //API?.getImagesByTag("cats")
         
         print("after method-call")
         
@@ -45,8 +45,7 @@ class TestViewController: UIViewController, ImgurAPIDelegate {
             }
         }*/
     }
-    
-    func APIsetImage(image: UIImage) {
-        imageView.image = image
+    func APIsetImage(imgurImage: ImgurImage) {
+        imageView.image = imgurImage.image
     }
 }
