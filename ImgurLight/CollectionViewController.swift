@@ -27,21 +27,6 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
         automaticallyAdjustsScrollViewInsets = false
         collectionView?.contentInset.top = 20*/
         
-        
-        
-        
-        /*cells.append(UIImage(named: "daft_punk")!)
-        cells.append(UIImage(named: "kanye_west")!)
-        cells.append(UIImage(named: "tame_impala")!)
-        cells.append(UIImage(named: "joy_division")!)
-        cells.append(UIImage(named: "the_smiths")!)
-        cells.append(UIImage(named: "metallica")!)
-        cells.append(UIImage(named: "tycho")!)*/
-        
-        
-        
-        
-        
         API = ImgurAPI()
         API?.delegate = self
         
@@ -83,7 +68,7 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
             let imageCell = sender as! ImageCell
             
             controller.image = imageCell.imageView.image
-            controller.text = imageCell.id
+            controller.id = imageCell.id
             
         } else if segue.identifier == "search" {
             

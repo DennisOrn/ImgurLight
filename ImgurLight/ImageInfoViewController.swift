@@ -15,18 +15,20 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     
     var API: ImgurAPI?
     
-    var text: String?
+    let imageQuality = "l" // t = small, m = medium, l = large, h = huge, "" = normal
+    
+    var id: String?
     var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*API = ImgurAPI()
+        API = ImgurAPI()
         API?.delegate = self
-        API?.getImageById("jyuTT02")*/
+        API?.getImageById(id!, quality: imageQuality)
         
-        imageView.image = image
-        label.text = text
+        //imageView.image = image
+        label.text = id
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,6 +47,9 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     }
     */
     
+    func APIsetImage(imgurImage: ImgurImage) {
+        imageView.image = imgurImage.image
+    }
     
     /*func APIsetImage(image: UIImage) {
         imageView.image = image

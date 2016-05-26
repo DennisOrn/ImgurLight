@@ -12,10 +12,23 @@ import SwiftyJSON
 
 @objc protocol ImgurAPIDelegate: class {
     optional func APIsetImage(imgurImage: ImgurImage)
-    optional func APIsetImages(images: [UIImage])
 }
 
 class ImgurAPI: NSObject { // Singleton?
+    
+    
+    
+    
+    
+    
+    // TODO
+    // check response code, if wrong: don't create image.
+    
+    
+    
+    
+    
+    
     
     weak var delegate: ImgurAPIDelegate?
     
@@ -23,20 +36,21 @@ class ImgurAPI: NSObject { // Singleton?
     let urlBase = "https://i.imgur.com/"
     let header = ["Authorization": "Client-ID f21d9d4d90b2e19"]
     
-    let imageQuality = "m" // t = small, m = medium, l = large, h = huge, "" = normal
+    let thumbnailQuality = "m" // t = small, m = medium, l = large, h = huge, "" = normal
     
-    func getImageById(id: String) {
+    func getImageById(id: String, quality: String) {
         
-        Alamofire.request(.GET, urlBase + id + imageQuality + ".jpg")
+        Alamofire.request(.GET, urlBase + id + quality + ".jpg")
             .responseJSON { response in
                 
                 if let data = response.data {
                     
                     let image = UIImage(data: data, scale: 1)
                     if image != nil {
-                        //image!.id = id
+                        
                         let imgurImage = ImgurImage(id: id, image: image!)
                         self.delegate?.APIsetImage?(imgurImage)
+                        print("getImageById DONE!")
                     }
                 }
         }
@@ -69,8 +83,8 @@ class ImgurAPI: NSObject { // Singleton?
     
     func getImagesByTag(tag: String) {
         
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+        //let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             
             var idList = [String]()
             let semaphore = dispatch_semaphore_create(0)
@@ -95,13 +109,14 @@ class ImgurAPI: NSObject { // Singleton?
             for id in idList {
                 
                 dispatch_group_enter(group)
-                Alamofire.request(.GET, self.urlBase + id + self.imageQuality + ".jpg")
+                Alamofire.request(.GET, self.urlBase + id + self.thumbnailQuality + ".jpg")
                     .responseJSON { response in
                         
                         if let data = response.data {
                             
                             let image = UIImage(data: data, scale: 1)
                             if image != nil {
+                                
                                 let imgurImage = ImgurImage(id: id, image: image!)
                                 self.delegate?.APIsetImage?(imgurImage)
                             }
