@@ -10,13 +10,18 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class TestViewController: UIViewController {
+class TestViewController: UIViewController, ImgurAPIDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
+    
+    var API: ImgurAPI?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        API = ImgurAPI()
+        API?.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,32 +30,23 @@ class TestViewController: UIViewController {
     }
     
     @IBAction func buttonPressed(sender: UIButton) {
-        Alamofire.request(.GET, "https://api.imgur.com/3/topics/defaults")
-            .responseJSON { response in
-                print(response.request)  // original URL request
-                print(response.response) // URL response
-                print(response.data)     // server data
-                print(response.result)   // result of response serialization
-                
-                if let json = response.result.value {
-                    //print("JSON: \(JSON)")
-                    
-                    /*let response = json as! NSDictionary
-                     let data = response.objectForKey("data")!
-                     print(data.dynamicType)
-                     print(data.count)*/
-                    //print(data.firstObject)
-                    
-                    let data = JSON(json)
-                    print(data)
-                    print("\n\n")
-                    for item in data["data"].arrayValue {
-                        print(item["description"].stringValue)
-                    }
-                    
-                    
-                    //self.label.text = "asd\nasd\nasd"//JSON as? String
-                }
-        }
+        
+        API?.getImagesByTag("cats")
+        
+        print("after method-call")
+        
+        /*let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            
+            //self.API?.getIDsByTag("cats")
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                // update some UI
+            }
+        }*/
+    }
+    
+    func APIsetImage(image: UIImage) {
+        imageView.image = image
     }
 }

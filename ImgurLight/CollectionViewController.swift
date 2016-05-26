@@ -8,11 +8,12 @@
 
 import UIKit
 
-class CollectionViewController: UICollectionViewController, SearchDelegate {
+class CollectionViewController: UICollectionViewController, SearchDelegate, ImgurAPIDelegate {
     
     let reuseIdentifier = "cell"
-    
     let cells = ["daft_punk", "kanye_west", "tame_impala", "joy_division", "the_smiths", "metallica", "tycho"]
+    
+    var API: ImgurAPI?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,9 @@ class CollectionViewController: UICollectionViewController, SearchDelegate {
         /*extendedLayoutIncludesOpaqueBars = false
         automaticallyAdjustsScrollViewInsets = false
         collectionView?.contentInset.top = 20*/
+        
+        API = ImgurAPI()
+        API?.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,5 +121,9 @@ class CollectionViewController: UICollectionViewController, SearchDelegate {
     
     func dismissController(controller: UIViewController) {
         controller.dismissViewControllerAnimated(true) {}
+    }
+    
+    func APIsetImage(image: UIImage) {
+        print("yoyo 1")
     }
 }
