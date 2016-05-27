@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SearchDelegate: class {
-    func changeTitle(title: String)
+    func changeCategory(category: String)
     func dismissController(controller: UIViewController)
 }
 
@@ -53,7 +53,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         let text = (cell?.textLabel?.text)!
-        delegate?.changeTitle(text)
+        delegate?.changeCategory(text)
         delegate?.dismissController(self)
     }
     
@@ -78,6 +78,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return
         }
         
+        // Check if there is a whitespace in the text field.
+        let whitespace = NSCharacterSet.whitespaceCharacterSet()
+        let range = keyword.rangeOfCharacterFromSet(whitespace)
+        if range != nil {
+            print("whitespace found")
+            return
+        }
+        
         searchResult.append(keyword)
         
         let row = searchResult.indexOf(keyword)!
@@ -88,7 +96,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func mostRecentButtonPressed(sender: UIButton) {
-        delegate?.changeTitle("Most Recent")
+        delegate?.changeCategory("Most Recent")
         delegate?.dismissController(self)
     }
     

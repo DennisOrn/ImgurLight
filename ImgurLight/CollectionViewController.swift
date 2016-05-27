@@ -30,10 +30,16 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
         API = ImgurAPI()
         API?.delegate = self
         
-        API?.getImagesByTag("cats")
+        changeCategory("cats")
     }
     
-    
+    func changeCategory(category: String) {
+        
+        cells.removeAll()
+        self.collectionView?.reloadData()
+        navigationItem.title = category
+        API?.getImagesByTag(category)
+    }
 
     
     func APIsetImage(image: ImgurImage) {
@@ -135,10 +141,6 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
     */
     
     // MARK: SearchDelegate
-    
-    func changeTitle(title: String) {
-        navigationItem.title = title
-    }
     
     func dismissController(controller: UIViewController) {
         controller.dismissViewControllerAnimated(true) {}

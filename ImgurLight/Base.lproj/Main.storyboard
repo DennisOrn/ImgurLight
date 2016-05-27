@@ -86,7 +86,7 @@
             </objects>
             <point key="canvasLocation" x="3003" y="-1569"/>
         </scene>
-        <!--Most Recent-->
+        <!--Collection View Controller-->
         <scene sceneID="ftr-7P-e5v">
             <objects>
                 <collectionViewController id="Vw1-VF-1vJ" customClass="CollectionViewController" customModule="ImgurLight" customModuleProvider="target" sceneMemberID="viewController">
@@ -130,7 +130,7 @@
                             <outlet property="delegate" destination="Vw1-VF-1vJ" id="EJi-2N-rt4"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Most Recent" id="GxS-Ob-hv7">
+                    <navigationItem key="navigationItem" id="GxS-Ob-hv7">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="bp0-fx-Mz0">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
