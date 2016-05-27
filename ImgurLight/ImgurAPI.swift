@@ -56,31 +56,6 @@ class ImgurAPI: NSObject { // Singleton?
         }
     }
     
-    /*func getImagesByTag(tag: String) {
-        
-        Alamofire.request(.GET, apiBase + "gallery/t/" + tag, headers: header)
-            .responseJSON { response in
-                
-                if let jsonData = response.result.value {
-                    let json = JSON(jsonData)
-                    //print(json)
-                    //print(json["data"])
-                    
-                    var idList = [String]()
-                    var imageList = [UIImage]()
-                    
-                    for item in json["data"]["items"].arrayValue {
-                        //print(item)
-                        idList.append(item["id"].stringValue)
-                    }
-                }
-        }
-    }*/
-    
-    
-    
-    
-    
     func getImagesByTag(tag: String) {
         
         //let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
@@ -103,7 +78,7 @@ class ImgurAPI: NSObject { // Singleton?
                     dispatch_semaphore_signal(semaphore)
             }
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-            print(idList)
+            print("fetching images: \(idList)")
             
             let group = dispatch_group_create()
             for id in idList {
@@ -114,12 +89,23 @@ class ImgurAPI: NSObject { // Singleton?
                         
                         if let data = response.data {
                             
-                            let image = UIImage(data: data, scale: 1)
-                            if image != nil {
-                                
-                                let imgurImage = ImgurImage(id: id, image: image!)
-                                self.delegate?.APIsetImage?(imgurImage)
+                            let reponseUrl = response.response?.URL?.absoluteString
+                            
+                            if reponseUrl!.containsString("https://i.imgur.com/removed.png") {
+                                print("\(id): not found")
+                            } else {
+                                let image = UIImage(data: data, scale: 1)
+                                if image != nil {
+                                    
+                                    let imgurImage = ImgurImage(id: id, image: image!)
+                                    self.delegate?.APIsetImage?(imgurImage)
+                                }
                             }
+                            
+                            //print("\n\(id)")
+                            //print(response.response)
+                            
+                            
                         }
                         dispatch_group_leave(group)
                 }
