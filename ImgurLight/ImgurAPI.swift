@@ -16,27 +16,13 @@ import SwiftyJSON
 
 class ImgurAPI: NSObject { // Singleton?
     
-    
-    
-    
-    
-    
-    // TODO
-    // check response code, if wrong: don't create image.
-    
-    
-    
-    
-    
-    
-    
     weak var delegate: ImgurAPIDelegate?
     
     let apiBase = "https://api.imgur.com/3/"
     let urlBase = "https://i.imgur.com/"
     let header = ["Authorization": "Client-ID f21d9d4d90b2e19"]
     
-    let thumbnailQuality = "m" // t = small, m = medium, l = large, h = huge, "" = normal
+    let thumbnailQuality = "t" // t = small, m = medium, l = large, h = huge, "" = normal
     
     func getImageById(id: String, quality: String) {
         
@@ -101,16 +87,11 @@ class ImgurAPI: NSObject { // Singleton?
                                     self.delegate?.APIsetImage?(imgurImage)
                                 }
                             }
-                            
-                            //print("\n\(id)")
-                            //print(response.response)
-                            
-                            
                         }
                         dispatch_group_leave(group)
                 }
             }
-            dispatch_group_wait(group, DISPATCH_TIME_FOREVER)
+            dispatch_group_wait(group, DISPATCH_TIME_FOREVER) // dispatch_group can be removed if nothing more is done after this line.
             print("getImagesByTag DONE!")
         }
     }
