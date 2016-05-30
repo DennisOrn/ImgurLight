@@ -10,7 +10,6 @@ import UIKit
 
 class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     
     var API: ImgurAPI?
@@ -18,7 +17,6 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     let imageQuality = "l" // t = small, m = medium, l = large, h = huge, "" = normal
     
     var id: String?
-    var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +25,6 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
         API?.delegate = self
         API?.getImageById(id!, quality: imageQuality)
         
-        //imageView.image = image
         label.text = id
     }
     
@@ -48,10 +45,16 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     */
     
     func APIsetImage(imgurImage: ImgurImage) {
-        imageView.image = imgurImage.image
+        
+        let heightToWidth = (imgurImage.image?.size.height)! / (imgurImage.image?.size.width)!
+        
+        let imageView = UIImageView(image: imgurImage.image)
+        imageView.frame = CGRect(
+            x: 0,
+            y: 64,
+            width: view.bounds.width,
+            height: view.bounds.width * heightToWidth)
+        
+        view.addSubview(imageView)
     }
-    
-    /*func APIsetImage(image: UIImage) {
-        imageView.image = image
-    }*/
 }

@@ -161,22 +161,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BRK-Dh-300">
-                                <rect key="frame" x="0.0" y="64" width="600" height="300"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BRK-Dh-300" firstAttribute="top" secondItem="OWI-hf-nZ8" secondAttribute="bottom" id="F8m-Zg-k1z"/>
-                            <constraint firstItem="BRK-Dh-300" firstAttribute="centerX" secondItem="vqT-vA-sMX" secondAttribute="centerX" id="GSz-zy-APG"/>
-                            <constraint firstItem="y2e-zb-zqD" firstAttribute="top" secondItem="BRK-Dh-300" secondAttribute="bottom" constant="187" id="GWJ-pI-Koq"/>
-                            <constraint firstItem="BRK-Dh-300" firstAttribute="width" secondItem="vqT-vA-sMX" secondAttribute="width" id="XUF-SG-MIF"/>
                             <constraint firstItem="y2e-zb-zqD" firstAttribute="top" secondItem="JeJ-RG-LCO" secondAttribute="bottom" constant="41" id="mMb-bx-8dn"/>
                             <constraint firstItem="JeJ-RG-LCO" firstAttribute="centerX" secondItem="vqT-vA-sMX" secondAttribute="centerX" id="xSf-66-Xbq"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="BRK-Dh-300" id="66m-Uo-Cd4"/>
                         <outlet property="label" destination="JeJ-RG-LCO" id="hCq-oV-f7z"/>
                     </connections>
                 </viewController>

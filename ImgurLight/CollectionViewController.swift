@@ -73,7 +73,6 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
             let controller = segue.destinationViewController as! ImageInfoViewController
             let imageCell = sender as! ImageCell
             
-            controller.image = imageCell.imageView.image
             controller.id = imageCell.id
             
         } else if segue.identifier == "search" {
