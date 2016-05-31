@@ -44,11 +44,13 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     }
     */
     
-    func APIsetImage(imgurImage: ImgurImage) {
+    func APIsetImage(imgurImageData: ImgurImageData) {
         
-        let heightToWidth = (imgurImage.image?.size.height)! / (imgurImage.image?.size.width)!
+        let image = UIImage(data: imgurImageData.imageData!)
         
-        let imageView = UIImageView(image: imgurImage.image)
+        let heightToWidth = image!.size.height / image!.size.width
+        
+        let imageView = UIImageView(image: image)
         imageView.frame = CGRect(
             x: 0,
             y: 64,

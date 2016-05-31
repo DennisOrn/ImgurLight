@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 @objc protocol ImgurAPIDelegate: class {
-    optional func APIsetImage(imgurImage: ImgurImage)
+    optional func APIsetImage(imgurImageData: ImgurImageData)
 }
 
 class ImgurAPI: NSObject { // Singleton?
@@ -31,13 +31,16 @@ class ImgurAPI: NSObject { // Singleton?
                 
                 if let data = response.data {
                     
-                    let image = UIImage(data: data, scale: 1)
+                    /*let image = UIImage(data: data, scale: 1)
                     if image != nil {
                         
                         let imgurImage = ImgurImage(id: id, image: image!)
                         self.delegate?.APIsetImage?(imgurImage)
                         print("getImageById DONE!")
-                    }
+                    }*/
+                    let imgurImageData = ImgurImageData(id: id, imageData: data)
+                    self.delegate?.APIsetImage?(imgurImageData)
+                    print("getImageById DONE!")
                 }
         }
     }
@@ -80,12 +83,15 @@ class ImgurAPI: NSObject { // Singleton?
                             if reponseUrl!.containsString("https://i.imgur.com/removed.png") {
                                 print("\(id): not found")
                             } else {
-                                let image = UIImage(data: data, scale: 1)
+                                /*let image = UIImage(data: data, scale: 1)
                                 if image != nil {
                                     
                                     let imgurImage = ImgurImage(id: id, image: image!)
                                     self.delegate?.APIsetImage?(imgurImage)
-                                }
+                                }*/
+                                
+                                let imgurImageData = ImgurImageData(id: id, imageData: data)
+                                self.delegate?.APIsetImage?(imgurImageData)
                             }
                         }
                         dispatch_group_leave(group)

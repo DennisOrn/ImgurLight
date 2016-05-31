@@ -6,5 +6,6 @@ target 'ImgurLight' do
 
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
+	pod 'Gifu'
 
 end

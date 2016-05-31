@@ -1,15 +1,18 @@
 PODS:
   - Alamofire (3.4.0)
+  - Gifu (1.2.1)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire
+  - Gifu
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  Gifu: 0eab1ca24a4adbd949338bcb71a8556748cb2d28
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 59ce7dcd29c3a459071dcb9b8375271fed95f578
+PODFILE CHECKSUM: 0ec82830d558e008e5ca4aef88f7209f987275b1
 
 COCOAPODS: 1.0.0
