@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImgurImage: NSObject {
+class ImgurImage: NSObject { // Not used at the moment.
     
     var image: UIImage?
     var id: String?

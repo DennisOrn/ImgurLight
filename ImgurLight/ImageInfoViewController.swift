@@ -45,7 +45,7 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     }
     */
     
-    func APIsetImage(imgurImageData: ImgurImageData) {
+    func APISetImage(imgurImageData: ImgurImageData) {
         
         if imgurImageData.isGif == true {
             

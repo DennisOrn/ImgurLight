@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 @objc protocol ImgurAPIDelegate: class {
-    optional func APIsetImage(imgurImageData: ImgurImageData)
+    optional func APISetImage(imgurImageData: ImgurImageData)
 }
 
 class ImgurAPI: NSObject { // Singleton?
@@ -24,6 +24,11 @@ class ImgurAPI: NSObject { // Singleton?
     
     let thumbnailQuality = "t" // t = small, m = medium, l = large, h = huge, "" = normal
     
+    /**
+     Fetches an image and then calls the mehod APISetImage.
+     - parameter id: The id of the image.
+     - parameter quality: The quality of the image.
+     */
     func getImageById(id: String, quality: String) {
         
         Alamofire.request(.GET, urlBase + id + quality + ".jpg")
@@ -48,15 +53,20 @@ class ImgurAPI: NSObject { // Singleton?
                     }
                     
                     let imgurImageData = ImgurImageData(id: id, data: data, isGif: isGif)
-                    self.delegate?.APIsetImage?(imgurImageData)
+                    self.delegate?.APISetImage?(imgurImageData)
                     print("getImageById DONE!")
                 }
         }
     }
     
+    /**
+     Searches Imgur for the tag and then fetches all the images associated with the tag.
+     APISetImage is called for every image.
+     - parameter tag: The tag that will be used when searching Imgur.
+     */
     func getImagesByTag(tag: String) {
         
-        //let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        // Create new thread for requesting data from the Imgur API.
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             
             var idList = [String]()
@@ -75,6 +85,8 @@ class ImgurAPI: NSObject { // Singleton?
                     }
                     dispatch_semaphore_signal(semaphore)
             }
+            
+            // Wait until
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
             print("fetching images: \(idList)")
             
@@ -108,7 +120,7 @@ class ImgurAPI: NSObject { // Singleton?
                                 }
                                 
                                 let imgurImageData = ImgurImageData(id: id, data: data, isGif: isGif)
-                                self.delegate?.APIsetImage?(imgurImageData)
+                                self.delegate?.APISetImage?(imgurImageData)
                             }
                         }
                         dispatch_group_leave(group)

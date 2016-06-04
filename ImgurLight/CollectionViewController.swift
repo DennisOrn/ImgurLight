@@ -12,7 +12,6 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
     
     let reuseIdentifier = "cell"
     var cells = [ImgurImageData]()
-    //let cells = ["daft_punk", "kanye_west", "tame_impala", "joy_division", "the_smiths", "metallica", "tycho"]
     
     var API: ImgurAPI?
     
@@ -33,6 +32,10 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
         changeCategory("cats")
     }
     
+    /**
+     Changes the category of the images shown in the collection view.
+     - parameter category: The image-category that will be used.
+     */
     func changeCategory(category: String) {
         
         cells.removeAll()
@@ -40,9 +43,12 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
         navigationItem.title = category
         API?.getImagesByTag(category)
     }
-
     
-    func APIsetImage(imageData: ImgurImageData) {
+    /**
+     Appends an image to the collection view.
+     - parameter imageData: The image-data.
+     */
+    func APISetImage(imageData: ImgurImageData) {
         
         cells.append(imageData)
         self.collectionView?.reloadData()
