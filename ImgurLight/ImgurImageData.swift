@@ -10,11 +10,13 @@ import UIKit
 
 class ImgurImageData: NSObject {
     
-    var imageData: NSData?
     var id: String?
+    var data: NSData?
+    var isGif: Bool?
     
-    init(id: String, imageData: NSData) {
+    init(id: String, data: NSData, isGif: Bool) {
         self.id = id
-        self.imageData = imageData
+        self.data = data
+        self.isGif = isGif
     }
 }

@@ -46,7 +46,7 @@ class TestViewController: UIViewController, ImgurAPIDelegate {
         }*/
     }
     func APIsetImage(imgurImageData: ImgurImageData) {
-        let image = UIImage(data: imgurImageData.imageData!)
+        let image = UIImage(data: imgurImageData.data!)
         imageView.image = image
     }
 }

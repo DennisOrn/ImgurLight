@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Gifu
 
 class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     
@@ -46,17 +47,38 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     
     func APIsetImage(imgurImageData: ImgurImageData) {
         
-        let image = UIImage(data: imgurImageData.imageData!)
-        
-        let heightToWidth = image!.size.height / image!.size.width
-        
-        let imageView = UIImageView(image: image)
-        imageView.frame = CGRect(
-            x: 0,
-            y: 64,
-            width: view.bounds.width,
-            height: view.bounds.width * heightToWidth)
-        
-        view.addSubview(imageView)
+        if imgurImageData.isGif == true {
+            
+            print("GIF!")
+            
+            label.text = label.text! + " GIF"
+            
+            let imageView = AnimatableImageView()
+            imageView.frame = CGRect(
+                x: 0,
+                y: 64,
+                width: self.view.bounds.width,
+                height: self.view.bounds.width)
+            imageView.animateWithImageData(imgurImageData.data!)
+            
+            view.addSubview(imageView)
+            
+        } else {
+            
+            print("NOT GIF!")
+            
+            let image = UIImage(data: imgurImageData.data!)
+            
+            let heightToWidth = image!.size.height / image!.size.width
+            
+            let imageView = UIImageView(image: image)
+            imageView.frame = CGRect(
+                x: 0,
+                y: 64,
+                width: view.bounds.width,
+                height: view.bounds.width * heightToWidth)
+            
+            view.addSubview(imageView)
+        }
     }
 }

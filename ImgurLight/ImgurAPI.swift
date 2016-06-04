@@ -38,7 +38,16 @@ class ImgurAPI: NSObject { // Singleton?
                         self.delegate?.APIsetImage?(imgurImage)
                         print("getImageById DONE!")
                     }*/
-                    let imgurImageData = ImgurImageData(id: id, imageData: data)
+                    
+                    var isGif = false
+                    if let contentType = response.response!.allHeaderFields["Content-Type"] as? String {
+                        print(contentType)
+                        if contentType.containsString("gif") {
+                            isGif = true
+                        }
+                    }
+                    
+                    let imgurImageData = ImgurImageData(id: id, data: data, isGif: isGif)
                     self.delegate?.APIsetImage?(imgurImageData)
                     print("getImageById DONE!")
                 }
@@ -85,12 +94,20 @@ class ImgurAPI: NSObject { // Singleton?
                             } else {
                                 /*let image = UIImage(data: data, scale: 1)
                                 if image != nil {
-                                    
+                                 
                                     let imgurImage = ImgurImage(id: id, image: image!)
                                     self.delegate?.APIsetImage?(imgurImage)
                                 }*/
                                 
-                                let imgurImageData = ImgurImageData(id: id, imageData: data)
+                                var isGif = false
+                                if let contentType = response.response!.allHeaderFields["Content-Type"] as? String {
+                                    print(contentType)
+                                    if contentType.containsString("gif") {
+                                        isGif = true
+                                    }
+                                }
+                                
+                                let imgurImageData = ImgurImageData(id: id, data: data, isGif: isGif)
                                 self.delegate?.APIsetImage?(imgurImageData)
                             }
                         }
