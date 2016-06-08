@@ -96,6 +96,7 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ImageCell
         
         /*let filename = cells[indexPath.row]
