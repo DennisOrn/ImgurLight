@@ -40,11 +40,6 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
         label.text = id
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func saveImage() {
         
         if let imageData = imgurImageData {

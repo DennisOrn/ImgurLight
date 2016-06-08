@@ -95,7 +95,6 @@ class FavoriteImageInfoViewController: UIViewController {
         if isMovingFromParentViewController() {
             
             let parent = parentViewController?.childViewControllers[0] as! FavoritesCollectionViewController
-            
             parent.updateImageList()
             parent.reloadView()
         }
@@ -115,18 +114,13 @@ class FavoriteImageInfoViewController: UIViewController {
                 managedContext.deleteObject(entityToDelete)
             }
         } catch {
-            // Do something in response to error condition
+            print("Could not fetch entity")
         }
         
         do {
             try managedContext.save()
         } catch {
-            // Do something in response to error condition
+            print("Could not save context")
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
