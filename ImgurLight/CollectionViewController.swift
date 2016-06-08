@@ -17,9 +17,6 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         
         edgesForExtendedLayout = UIRectEdge.None
         /*extendedLayoutIncludesOpaqueBars = false
@@ -48,15 +45,11 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
      Appends an image to the collection view.
      - parameter imageData: The image-data.
      */
-    func APISetImage(imageData: ImgurImageData) {
+    func APISetImage(imgurImageData: ImgurImageData) {
         
-        cells.append(imageData)
+        cells.append(imgurImageData)
         self.collectionView?.reloadData()
     }
-    
-    
-    
-    
     
 
     override func didReceiveMemoryWarning() {

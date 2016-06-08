@@ -107,7 +107,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sNw-wm-LjC">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sNw-wm-LjC">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         </imageView>
                                     </subviews>
@@ -296,7 +296,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Utm-Sc-weT">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Utm-Sc-weT">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         </imageView>
                                     </subviews>
@@ -310,6 +310,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="Utm-Sc-weT" id="vch-ij-1Gq"/>
+                                    <segue destination="jqB-Ro-BM0" kind="show" id="fSm-3O-o60"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -319,8 +320,10 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="V9j-Ul-uEt">
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="xq5-I4-icO">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Z9t-PB-crf">
+                            <connections>
+                                <action selector="refreshButtonPressed:" destination="8cT-AQ-mnp" id="dfu-NO-gm3"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
@@ -346,6 +349,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KRe-3C-iLb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="388" y="1093"/>
+        </scene>
+        <!--Favorite Image Info View Controller-->
+        <scene sceneID="1i8-Xj-hpT">
+            <objects>
+                <viewController id="jqB-Ro-BM0" customClass="FavoriteImageInfoViewController" customModule="ImgurLight" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WEr-ZJ-6fj"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cdy-64-SzL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bhm-FX-1KL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q3E-tm-jdz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1831" y="1093"/>
         </scene>
     </scenes>
 </document>

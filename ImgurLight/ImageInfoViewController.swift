@@ -8,6 +8,7 @@
 
 import UIKit
 import Gifu
+import CoreData
 
 class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     
@@ -18,9 +19,19 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     let imageQuality = "l" // t = small, m = medium, l = large, h = huge, "" = normal
     
     var id: String?
+    var imgurImageData: ImgurImageData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let saveButton = UIBarButtonItem(
+            title: "Save",
+            style: .Plain,
+            target: self,
+            action: #selector(ImageInfoViewController.saveImage)
+        )
+        
+        self.navigationItem.rightBarButtonItem = saveButton
         
         API = ImgurAPI()
         API?.delegate = self
@@ -45,13 +56,36 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     }
     */
     
+    func saveImage() {
+        
+        if let imageData = imgurImageData {
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let managedContext = appDelegate.managedObjectContext
+            
+            let entity =  NSEntityDescription.entityForName("ImgurImageData", inManagedObjectContext:managedContext)
+            let image = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+            
+            image.setValue(imageData.id, forKey: "id")
+            image.setValue(imageData.data, forKey: "data")
+            image.setValue(imageData.isGif, forKey: "isGif")
+            
+            do {
+                try managedContext.save()
+                print("saved.")
+            } catch let error as NSError {
+                print("Could not save \(error), \(error.userInfo)")
+            }
+        }
+    }
+    
     func APISetImage(imgurImageData: ImgurImageData) {
+        
+        self.imgurImageData = imgurImageData
         
         if imgurImageData.isGif == true {
             
-            print("GIF!")
-            
-            label.text = label.text! + " GIF"
+            //print("GIF!")
             
             let imageView = AnimatableImageView()
             imageView.frame = CGRect(
@@ -65,7 +99,7 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
             
         } else {
             
-            print("NOT GIF!")
+            //print("NOT GIF!")
             
             let image = UIImage(data: imgurImageData.data!)
             

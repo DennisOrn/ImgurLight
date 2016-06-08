@@ -10,8 +10,8 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-@objc protocol ImgurAPIDelegate: class {
-    optional func APISetImage(imgurImageData: ImgurImageData)
+protocol ImgurAPIDelegate: class {
+    func APISetImage(imgurImageData: ImgurImageData)
 }
 
 class ImgurAPI: NSObject { // Singleton?
@@ -22,7 +22,7 @@ class ImgurAPI: NSObject { // Singleton?
     let urlBase = "https://i.imgur.com/"
     let header = ["Authorization": "Client-ID f21d9d4d90b2e19"]
     
-    let thumbnailQuality = "t" // t = small, m = medium, l = large, h = huge, "" = normal
+    let thumbnailQuality = "m" // t = small, m = medium, l = large, h = huge, "" = normal
     
     /**
      Fetches an image and then calls the mehod APISetImage.
@@ -53,7 +53,7 @@ class ImgurAPI: NSObject { // Singleton?
                     }
                     
                     let imgurImageData = ImgurImageData(id: id, data: data, isGif: isGif)
-                    self.delegate?.APISetImage?(imgurImageData)
+                    self.delegate?.APISetImage(imgurImageData)
                     print("getImageById DONE!")
                 }
         }
@@ -120,7 +120,7 @@ class ImgurAPI: NSObject { // Singleton?
                                 }
                                 
                                 let imgurImageData = ImgurImageData(id: id, data: data, isGif: isGif)
-                                self.delegate?.APISetImage?(imgurImageData)
+                                self.delegate?.APISetImage(imgurImageData)
                             }
                         }
                         dispatch_group_leave(group)
