@@ -9,24 +9,20 @@
 import UIKit
 import CoreData
 
-class FavoritesCollectionViewController: UICollectionViewController, ImgurAPIDelegate {
+class FavoritesCollectionViewController: UICollectionViewController {
     
     let reuseIdentifier = "favoriteCell"
     var cells = [ImgurImageData]()
     
     var images = [NSManagedObject]()
-    
-    var API: ImgurAPI?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Favorites"
         
-        API = ImgurAPI()
-        API?.delegate = self
-        
         updateImageList()
+        reloadView()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -48,26 +44,11 @@ class FavoritesCollectionViewController: UICollectionViewController, ImgurAPIDel
         }
     }
     
-    /**
-     Appends an image to the collection view.
-     - parameter imageData: The image-data.
-     */
-    func APISetImage(imageData: ImgurImageData) {
-        
-        cells.append(imageData)
-        self.collectionView?.reloadData()
-    }
-    
-    @IBAction func refreshButtonPressed(sender: UIBarButtonItem) {
-        
-        print("refreshing...")
+    func reloadView() {
         
         cells.removeAll()
-        updateImageList()
         
-        print("images: \(images.count)")
         for entry in images {
-            print(entry.valueForKey("id"))
             
             let id = entry.valueForKey("id") as! String
             let data = entry.valueForKey("data") as! NSData
@@ -78,15 +59,12 @@ class FavoritesCollectionViewController: UICollectionViewController, ImgurAPIDel
             cells.append(imgurImageData)
             self.collectionView?.reloadData()
         }
+    }
+    
+    @IBAction func refreshButtonPressed(sender: UIBarButtonItem) {
         
-        
-        
-        /*print("images: \(images.count)")
-        for entry in images {
-            print(entry.valueForKey("id"))
-        }*/
-        
-        print("refreshing done!")
+        updateImageList()
+        reloadView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,17 +76,11 @@ class FavoritesCollectionViewController: UICollectionViewController, ImgurAPIDel
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "showInfo" {
+        if segue.identifier == "favoriteShowInfo" {
             
-            let controller = segue.destinationViewController as! ImageInfoViewController
-            /**************/
+            let controller = segue.destinationViewController as! FavoriteImageInfoViewController
             let imageCell = sender as! ImageCell
-            
             controller.id = imageCell.id
-            /**************/
-            
-            let imgurImageData = sender as! ImgurImageData
-            controller.imgurImageData = imgurImageData
         }
     }
 

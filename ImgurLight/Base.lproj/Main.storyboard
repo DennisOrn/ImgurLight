@@ -310,7 +310,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="Utm-Sc-weT" id="vch-ij-1Gq"/>
-                                    <segue destination="jqB-Ro-BM0" kind="show" id="fSm-3O-o60"/>
+                                    <segue destination="jqB-Ro-BM0" kind="show" identifier="favoriteShowInfo" id="fSm-3O-o60"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
