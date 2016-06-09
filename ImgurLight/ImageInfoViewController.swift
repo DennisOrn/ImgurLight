@@ -14,7 +14,7 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     
     var API: ImgurAPI?
     
-    let imageQuality = "l" // t = small, m = medium, l = large, h = huge, "" = normal
+    let imageQuality = "" // t = small, m = medium, l = large, h = huge, "" = normal (must have 'normal' for gifs to work)
     
     var id: String?
     var imgurImageData: ImgurImageData?
@@ -65,24 +65,22 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
         
         if imgurImageData.isGif == true {
             
-            //print("GIF!")
+            let dummyImage = UIImage(data: imgurImageData.data!)
+            let heightToWidth = dummyImage!.size.height / dummyImage!.size.width
             
             let imageView = AnimatableImageView()
+            imageView.animateWithImageData(imgurImageData.data!)
             imageView.frame = CGRect(
                 x: 0,
                 y: 64,
                 width: self.view.bounds.width,
-                height: self.view.bounds.width)
-            imageView.animateWithImageData(imgurImageData.data!)
+                height: self.view.bounds.width * heightToWidth)
             
             view.addSubview(imageView)
             
         } else {
             
-            //print("NOT GIF!")
-            
             let image = UIImage(data: imgurImageData.data!)
-            
             let heightToWidth = image!.size.height / image!.size.width
             
             let imageView = UIImageView(image: image)

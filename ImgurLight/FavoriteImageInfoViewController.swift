@@ -56,24 +56,22 @@ class FavoriteImageInfoViewController: UIViewController {
                 
                 if imgurImageData!.isGif == true {
                     
-                    //print("GIF!")
+                    let dummyImage = UIImage(data: imgurImageData!.data!)
+                    let heightToWidth = dummyImage!.size.height / dummyImage!.size.width
                     
                     let imageView = AnimatableImageView()
+                    imageView.animateWithImageData(imgurImageData!.data!)
                     imageView.frame = CGRect(
                         x: 0,
                         y: 64,
                         width: self.view.bounds.width,
-                        height: self.view.bounds.width)
-                    imageView.animateWithImageData(imgurImageData!.data!)
+                        height: self.view.bounds.width * heightToWidth)
                     
                     view.addSubview(imageView)
                     
                 } else {
                     
-                    //print("NOT GIF!")
-                    
                     let image = UIImage(data: imgurImageData!.data!)
-                    
                     let heightToWidth = image!.size.height / image!.size.width
                     
                     let imageView = UIImageView(image: image)
