@@ -65,11 +65,11 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
         
         if imgurImageData.isGif == true {
             
-            let dummyImage = UIImage(data: imgurImageData.data!)
+            let dummyImage = UIImage(data: imgurImageData.data)
             let heightToWidth = dummyImage!.size.height / dummyImage!.size.width
             
             let imageView = AnimatableImageView()
-            imageView.animateWithImageData(imgurImageData.data!)
+            imageView.animateWithImageData(imgurImageData.data)
             imageView.frame = CGRect(
                 x: 0,
                 y: 64,
@@ -80,7 +80,7 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
             
         } else {
             
-            let image = UIImage(data: imgurImageData.data!)
+            let image = UIImage(data: imgurImageData.data)
             let heightToWidth = image!.size.height / image!.size.width
             
             let imageView = UIImageView(image: image)

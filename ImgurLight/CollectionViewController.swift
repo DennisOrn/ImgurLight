@@ -92,7 +92,7 @@ class CollectionViewController: UICollectionViewController, SearchDelegate, Imgu
         
         //let id = "test ya"
         cell.id = cells[indexPath.row].id
-        cell.imageView.image = UIImage(data: cells[indexPath.row].data!)
+        cell.imageView.image = UIImage(data: cells[indexPath.row].data)
         
         return cell
     }

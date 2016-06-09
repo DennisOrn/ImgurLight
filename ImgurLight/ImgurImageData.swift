@@ -10,9 +10,9 @@ import UIKit
 
 class ImgurImageData: NSObject {
     
-    var id: String?
-    var data: NSData?
-    var isGif: Bool?
+    let id: String
+    let data: NSData
+    let isGif: Bool
     
     init(id: String, data: NSData, isGif: Bool) {
         self.id = id

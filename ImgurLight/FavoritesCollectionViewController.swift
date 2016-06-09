@@ -91,7 +91,7 @@ class FavoritesCollectionViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ImageCell
         cell.id = cells[indexPath.row].id
-        cell.imageView.image = UIImage(data: cells[indexPath.row].data!)
+        cell.imageView.image = UIImage(data: cells[indexPath.row].data)
         
         return cell
     }
