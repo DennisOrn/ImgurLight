@@ -112,6 +112,7 @@ class FavoriteImageInfoViewController: UIViewController {
             let fetchedEntities = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
             if let entityToDelete = fetchedEntities.first {
                 managedContext.deleteObject(entityToDelete)
+                print("Image removed")
             }
         } catch {
             print("Could not fetch entity")

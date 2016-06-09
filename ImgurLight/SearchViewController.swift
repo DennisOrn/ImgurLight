@@ -89,8 +89,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.endUpdates()
     }
     
-    @IBAction func mostRecentButtonPressed(sender: UIButton) {
-        delegate?.changeCategory("Most Recent")
+    @IBAction func viralButtonPressed(sender: UIButton) {
+        delegate?.changeCategory("viral")
         delegate?.dismissController(self)
     }
 }

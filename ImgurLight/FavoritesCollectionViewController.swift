@@ -21,12 +21,14 @@ class FavoritesCollectionViewController: UICollectionViewController {
         
         navigationItem.title = "Favorites"
         
-        updateImageList()
-        reloadView()
+        //updateImageList()
+        //reloadView()
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+        super.viewDidAppear(animated)
+        updateImageList()
+        reloadView()
     }
     
     func updateImageList() {

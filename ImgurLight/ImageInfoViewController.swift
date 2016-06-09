@@ -12,8 +12,6 @@ import CoreData
 
 class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
     
-    @IBOutlet weak var label: UILabel!
-    
     var API: ImgurAPI?
     
     let imageQuality = "l" // t = small, m = medium, l = large, h = huge, "" = normal
@@ -36,8 +34,6 @@ class ImageInfoViewController: UIViewController, ImgurAPIDelegate {
         API = ImgurAPI()
         API?.delegate = self
         API?.getImageById(id!, quality: imageQuality)
-        
-        label.text = id
     }
     
     func saveImage() {
