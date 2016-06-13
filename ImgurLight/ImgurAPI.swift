@@ -86,7 +86,7 @@ class ImgurAPI: NSObject { // Singleton?
                     dispatch_semaphore_signal(semaphore)
             }
             
-            // Wait until
+            // Wait until the first request has finished.
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
             print("fetching images: \(idList)")
             
@@ -127,7 +127,6 @@ class ImgurAPI: NSObject { // Singleton?
                 }
             }
             dispatch_group_wait(group, DISPATCH_TIME_FOREVER) // dispatch_group can be removed if nothing more is done after this line.
-            print("getImagesByTag DONE!")
         }
     }
 }
